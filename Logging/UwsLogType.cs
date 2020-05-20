@@ -1,6 +1,6 @@
 ﻿﻿using System.ComponentModel.DataAnnotations;
 
-namespace ArcelorMittal.UnifiedWeightSystem.Common.Log
+namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
 {
     public class UwsLogType
     {

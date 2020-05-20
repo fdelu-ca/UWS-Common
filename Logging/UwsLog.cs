@@ -6,7 +6,7 @@ using ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
 
-namespace ArcelorMittal.UnifiedWeightSystem.Common.Log
+namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
 {
     public class UwsLog
     {

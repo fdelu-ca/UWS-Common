@@ -1,4 +1,4 @@
-﻿namespace ArcelorMittal.UnifiedWeightSystem.Common.Log
+﻿namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
 {
     public class UwsLogDetail
     {
