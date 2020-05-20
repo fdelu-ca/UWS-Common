@@ -22,7 +22,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
 
         //Vehicle
         public int? VehicleId { get; set; }
-        public Vehicle Vehicle { get; set; }
+        // public Vehicle Vehicle { get; set; }
         [DefaultValue(VehicleType.Undefined)]
         public VehicleType VehicleType { get; set; }
         public int? AxisCount { get; set; }

@@ -26,6 +26,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Key = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 20, nullable: true),
                     Description = table.Column<string>(maxLength: 100, nullable: true)
                 },
@@ -35,44 +36,15 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehiclePropertyTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 20, nullable: true),
-                    Description = table.Column<string>(maxLength: 100, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VehiclePropertyTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Vehicles",
-                columns: table => new
-                {
-                    VehicleId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    VehicleType = table.Column<byte>(nullable: false),
-                    Number = table.Column<string>(nullable: true),
-                    FactoryTara = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vehicles", x => x.VehicleId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "WeightCollections",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LocalId = table.Column<long>(nullable: false),
-                    Begin = table.Column<DateTimeOffset>(nullable: true),
-                    End = table.Column<DateTimeOffset>(nullable: true),
-                    StationId = table.Column<int>(nullable: true),
+                    DtBegin = table.Column<DateTimeOffset>(nullable: true),
+                    DtEnd = table.Column<DateTimeOffset>(nullable: true),
+                    ScalesSerial = table.Column<int>(nullable: true),
                     Direction = table.Column<byte>(nullable: false),
                     Stage = table.Column<byte>(nullable: false),
                     Release = table.Column<bool>(nullable: false),
@@ -89,6 +61,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Key = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 20, nullable: true),
                     Description = table.Column<string>(maxLength: 100, nullable: true)
                 },
@@ -98,35 +71,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehicleProperties",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    VehicleId = table.Column<int>(nullable: false),
-                    Timestamp = table.Column<DateTimeOffset>(nullable: false),
-                    Value = table.Column<string>(maxLength: 30, nullable: true),
-                    VehiclePropertyTypeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VehicleProperties", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_VehicleProperties_Vehicles_VehicleId",
-                        column: x => x.VehicleId,
-                        principalTable: "Vehicles",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VehicleProperties_VehiclePropertyTypes_VehiclePropertyTypeId",
-                        column: x => x.VehiclePropertyTypeId,
-                        principalTable: "VehiclePropertyTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StageHistories",
+                name: "StageHistory",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -138,14 +83,14 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StageHistories", x => x.Id);
+                    table.PrimaryKey("PK_StageHistory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StageHistories_StageHistories_LastStageId",
+                        name: "FK_StageHistory_StageHistory_LastStageId",
                         column: x => x.LastStageId,
-                        principalTable: "StageHistories",
+                        principalTable: "StageHistory",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_StageHistories_WeightCollections_WeightCollectionId",
+                        name: "FK_StageHistory_WeightCollections_WeightCollectionId",
                         column: x => x.WeightCollectionId,
                         principalTable: "WeightCollections",
                         principalColumn: "Id",
@@ -200,22 +145,16 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     WeightCollectionId = table.Column<long>(nullable: true),
                     VehicleId = table.Column<int>(nullable: true),
                     VehicleType = table.Column<byte>(nullable: false),
-                    AxisCount = table.Column<int>(nullable: false),
-                    Length = table.Column<int>(nullable: false),
+                    AxisCount = table.Column<int>(nullable: true),
+                    Length = table.Column<int>(nullable: true),
                     TypeWeight = table.Column<byte>(nullable: false),
                     Weight = table.Column<double>(nullable: true),
-                    Speed = table.Column<float>(nullable: true),
+                    Speed = table.Column<double>(nullable: true),
                     Quality = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WeightElements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WeightElements_Vehicles_VehicleId",
-                        column: x => x.VehicleId,
-                        principalTable: "Vehicles",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ShipmentId_Shipments",
                         column: x => x.WeightCollectionId,
@@ -281,15 +220,15 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StageHistories_LastStageId",
-                table: "StageHistories",
+                name: "IX_StageHistory_LastStageId",
+                table: "StageHistory",
                 column: "LastStageId",
                 unique: true,
                 filter: "[LastStageId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StageHistories_WeightCollectionId",
-                table: "StageHistories",
+                name: "IX_StageHistory_WeightCollectionId",
+                table: "StageHistory",
                 column: "WeightCollectionId");
 
             migrationBuilder.CreateIndex(
@@ -308,14 +247,10 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 column: "WeightCollectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VehicleProperties_VehicleId",
-                table: "VehicleProperties",
-                column: "VehicleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VehicleProperties_VehiclePropertyTypeId",
-                table: "VehicleProperties",
-                column: "VehiclePropertyTypeId");
+                name: "IX_UwsLogTypes_Key",
+                table: "UwsLogTypes",
+                column: "Key",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_WeightCollectionProperties_WeightCollectionId",
@@ -338,26 +273,24 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 column: "WeightPropertyTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WeightElements_VehicleId",
-                table: "WeightElements",
-                column: "VehicleId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_WeightElements_WeightCollectionId",
                 table: "WeightElements",
                 column: "WeightCollectionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WeightPropertyTypes_Key",
+                table: "WeightPropertyTypes",
+                column: "Key",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StageHistories");
+                name: "StageHistory");
 
             migrationBuilder.DropTable(
                 name: "UwsLogs");
-
-            migrationBuilder.DropTable(
-                name: "VehicleProperties");
 
             migrationBuilder.DropTable(
                 name: "WeightCollectionProperties");
@@ -372,16 +305,10 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 name: "UwsLogTypes");
 
             migrationBuilder.DropTable(
-                name: "VehiclePropertyTypes");
-
-            migrationBuilder.DropTable(
                 name: "WeightElements");
 
             migrationBuilder.DropTable(
                 name: "WeightPropertyTypes");
-
-            migrationBuilder.DropTable(
-                name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "WeightCollections");

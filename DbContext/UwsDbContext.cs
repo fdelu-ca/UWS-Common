@@ -12,10 +12,10 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
     public partial class UwsDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         //Documentation
-        public virtual DbSet<StageHistory> StageHistories { get; set; }
-        public virtual DbSet<Vehicle> Vehicles { get; set; }        
-        public virtual DbSet<VehicleProperty> VehicleProperties { get; set; }        
-        public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
+        // public virtual DbSet<StageHistory> StageHistories { get; set; }
+        // public virtual DbSet<Vehicle> Vehicles { get; set; }        
+        // public virtual DbSet<VehicleProperty> VehicleProperties { get; set; }        
+        // public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
 
         //Log
         public virtual DbSet<UwsLog> UwsLogs { get; set; }
@@ -80,6 +80,13 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
                 .HasOne(x => x.LastStage)
                 .WithOne()
                 .OnDelete(DeleteBehavior.NoAction);
+            
+            modelBuilder.Entity<UwsLogType>()
+                .HasIndex(u => u.Key)
+                .IsUnique();
+            modelBuilder.Entity<WeightPropertyType>()
+                .HasIndex(u => u.Key)
+                .IsUnique();
             
             OnModelCreatingPartial(modelBuilder);
         }
