@@ -8,10 +8,10 @@
         
         [MaxLength(20)]
         public string RecognNumber { get; set; } //[19300654] - Считанный номер
-        public byte Quality { get; set; } //[72] - Качество картинки
-        public byte[] PhotoNumber { get; set; } //[image] - wagon image(cut)
-        /* Using byte Photo
-         using (var ms = new MemoryStream(byteArrayIn))
+        public int Quality { get; set; } //[72] - Качество картинки
+        public int[] PhotoNumber { get; set; } //[image] - wagon image(cut)
+        /* Using int Photo
+         using (var ms = new MemoryStream(intArrayIn))
          
         {
             return Image.FromStream(ms);

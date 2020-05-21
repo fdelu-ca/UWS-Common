@@ -4,14 +4,16 @@ using ArcelorMittal.UnifiedWeightSystem.Common.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
 {
     [DbContext(typeof(UwsDbContext))]
-    partial class UwsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200520195512_UpdateWeightCollection")]
+    partial class UpdateWeightCollection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +64,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int?>("RecognCollectionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ScalesSerial")
+                    b.Property<int?>("StationId")
                         .HasColumnType("int");
 
                     b.Property<DateTimeOffset>("Timestamp")
@@ -129,6 +131,115 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.ToTable("UwsLogTypes");
                 });
 
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightElement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AxisCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RecNumber")
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
+                    b.Property<double?>("Speed")
+                        .HasColumnType("float");
+
+                    b.Property<DateTimeOffset>("Timestamp")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("TypeWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleType")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Weight")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("WeightingCollectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WeightingOperationsID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeightingCollectionId");
+
+                    b.ToTable("WeightElements");
+                });
+
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightElementProperty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTimeOffset>("Timestamp")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("WeightElementId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeightPropertyTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeightElementId");
+
+                    b.HasIndex("WeightPropertyTypeId");
+
+                    b.ToTable("WeightElementProperties");
+                });
+
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightPropertyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<int>("Key")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique();
+
+                    b.ToTable("WeightPropertyTypes");
+                });
+
             modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollection", b =>
                 {
                     b.Property<int>("Id")
@@ -186,128 +297,13 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int>("WeightingCollectionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WeightingPropertyTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("WeightingCollectionId");
+                    b.HasIndex("WeightPropertyTypeId");
 
-                    b.HasIndex("WeightingPropertyTypeId");
+                    b.HasIndex("WeightingCollectionId");
 
                     b.ToTable("WeightingCollectionProperties");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingElement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AxisCount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Length")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OrderNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quality")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RecNumber")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<int?>("Speed")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("TypeWeight")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VehicleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VehicleType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Weight")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WeightingCollectionId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WeightingOperationsID")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WeightingCollectionId");
-
-                    b.ToTable("WeightingElements");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingElementProperty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.Property<int>("WeightElementId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WeightPropertyTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WeightingPropertyTypeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WeightElementId");
-
-                    b.HasIndex("WeightingPropertyTypeId");
-
-                    b.ToTable("WeightingElementProperties");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingPropertyType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<int>("Key")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Key")
-                        .IsUnique();
-
-                    b.ToTable("WeightingPropertyTypes");
                 });
 
             modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Documentation.StageHistory", b =>
@@ -337,38 +333,42 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasForeignKey("WeightingCollectionId");
                 });
 
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollectionProperty", b =>
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightElement", b =>
                 {
                     b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollection", "WeightingCollection")
-                        .WithMany()
-                        .HasForeignKey("WeightingCollectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingPropertyType", "WeightingPropertyType")
-                        .WithMany()
-                        .HasForeignKey("WeightingPropertyTypeId");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingElement", b =>
-                {
-                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollection", "WeightingCollection")
-                        .WithMany("WeightingElements")
+                        .WithMany("WeightElements")
                         .HasForeignKey("WeightingCollectionId")
                         .HasConstraintName("FK_ShipmentId_Shipments");
                 });
 
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingElementProperty", b =>
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightElementProperty", b =>
                 {
-                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingElement", "WeightElement")
+                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightElement", "WeightElement")
                         .WithMany()
                         .HasForeignKey("WeightElementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingPropertyType", "WeightingPropertyType")
+                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightPropertyType", "WeightPropertyType")
                         .WithMany()
-                        .HasForeignKey("WeightingPropertyTypeId");
+                        .HasForeignKey("WeightPropertyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollectionProperty", b =>
+                {
+                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightPropertyType", "WeightPropertyType")
+                        .WithMany()
+                        .HasForeignKey("WeightPropertyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollection", "WeightingCollection")
+                        .WithMany()
+                        .HasForeignKey("WeightingCollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

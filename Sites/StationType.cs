@@ -1,6 +1,6 @@
 ﻿namespace ArcelorMittal.UnifiedWeightSystem.Common.Sites
 {
-    public enum StationType : byte //0x00 => Type|Vehicle
+    public enum StationType : int //0x00 => Type|Vehicle
     {
         CarInternal = 0x00,
         TrainInternal = 0x01,

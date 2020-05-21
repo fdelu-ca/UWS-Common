@@ -1,6 +1,6 @@
 ﻿﻿namespace ArcelorMittal.UnifiedWeightSystem.Common
 {
-    public enum Stage : byte
+    public enum Stage : int
     {
         //Main Stage
         Weighed       = 0x10,        //Взвешен

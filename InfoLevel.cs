@@ -1,6 +1,6 @@
 ﻿namespace ArcelorMittal.UnifiedWeightSystem.Common
 {
-    public enum InfoLevel : byte
+    public enum InfoLevel : int
     {
         Fatal = 1,
         Error = 2,

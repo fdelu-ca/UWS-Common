@@ -12,8 +12,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess
             RecognPhotos = new List<RecognPhoto>();
         }
 
-        public long Id { get; set; } //[47215] - Ключ
-        public byte? OrderNumber { get; set; } //[1] - Порядковый номер
+        public int Id { get; set; } //[47215] - Ключ
+        public int? OrderNumber { get; set; } //[1] - Порядковый номер
         public DateTimeOffset Timestamp { get; set; } //[08.04.2020 17:06:36] - Время проезда
 
         public string PathUrl { get; set; } //["/2020-04/08/47215/"] - путь к папке взвешивания на медиа-сервере
@@ -39,7 +39,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess
         /// </summary>
         /// <exception cref="System.ArgumentNullException" />
         /// <returns>Photo</returns>
-        public byte[] GetPhotoNumber()
+        public int[] GetPhotoNumber()
         {
             return RecognPhotos.OrderByDescending(x => x.Quality).FirstOrDefault()?.PhotoNumber;
         }

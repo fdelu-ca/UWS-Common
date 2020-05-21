@@ -1,6 +1,6 @@
 ﻿namespace ArcelorMittal.UnifiedWeightSystem.Common
 {
-    public enum VehicleType : byte
+    public enum VehicleType : int
     {
         Undefined = 0x00,
         Train = 1,

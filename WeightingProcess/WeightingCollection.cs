@@ -8,18 +8,18 @@ using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
 {
-    public class WeightCollection
+    public class WeightingCollection
     {
         //TODO Добавить историю этапов #StageHistory                                   
 
-        public WeightCollection()
+        public WeightingCollection()
         {
-            WeightElements = new List<WeightElement>();
+            WeightingElements = new List<WeightingElement>();
         }
 
-        public long Id { get; set; } //[98543] - Ключ        
-        public long LocalId { get; set; }
-        public ICollection<WeightElement> WeightElements { get; set; } //Конкретные взвешивания(одно Т/С)
+        public int Id { get; set; } //[98543] - Ключ        
+        public int LocalId { get; set; }
+        public ICollection<WeightingElement> WeightingElements { get; set; } //Конкретные взвешивания(одно Т/С)
 
         public DateTimeOffset? DtBegin { get; set; } //Дата начала перевески
         public DateTimeOffset? DtEnd { get; set; } //Дата окончания перевески
@@ -34,6 +34,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         public bool Release { get; set; }
         
         [MaxLength(30)]
-        public string TrainStatus { get; set; } //Статус
+        public string Status { get; set; } //Статус
     }
 }

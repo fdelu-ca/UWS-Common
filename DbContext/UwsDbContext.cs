@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using ArcelorMittal.UnifiedWeightSystem.Common.Documentation;
-using ArcelorMittal.UnifiedWeightSystem.Common.Log;
+using ArcelorMittal.UnifiedWeightSystem.Common.Logging;
 using ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
@@ -35,12 +35,12 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         //public virtual DbSet<StationPropertyType> StationPropertyTypes  { get; set; }
 
         //WeightingProcess
-        public virtual DbSet<WeightCollection> WeightCollections { get; set; }
-        public virtual DbSet<WeightCollectionProperty> WeightCollectionProperties  { get; set; }
+        public virtual DbSet<WeightingCollection> WeightingCollections { get; set; }
+        public virtual DbSet<WeightingCollectionProperty> WeightingCollectionProperties  { get; set; }
 
-        public virtual DbSet<WeightElement> WeightElements  { get; set; }
-        public virtual DbSet<WeightElementProperty> WeightElementProperties  { get; set; }
-        public virtual DbSet<WeightPropertyType> WeightPropertyTypes  { get; set; }
+        public virtual DbSet<WeightingElement> WeightingElements { get; set; }
+        public virtual DbSet<WeightingElementProperty> WeightingElementProperties { get; set; }
+        public virtual DbSet<WeightingPropertyType> WeightingPropertyTypes { get; set; }
 
         public UwsDbContext()
         {
@@ -56,23 +56,23 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=HOME-PC\\SQLEXPRESS;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=KRR-TST-PAHWL02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<WeightCollection>()
-                .HasMany(sh => sh.WeightElements)
-                .WithOne(el => el.WeightCollection)
-                .HasForeignKey(el => el.WeightCollectionId)
+            modelBuilder.Entity<WeightingCollection>()
+                .HasMany(sh => sh.WeightingElements)
+                .WithOne(el => el.WeightingCollection)
+                .HasForeignKey(el => el.WeightingCollectionId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_ShipmentId_Shipments");
             
-            modelBuilder.Entity<WeightElement>()
-                .HasOne(el =>el.WeightCollection)
-                .WithMany(sh => sh.WeightElements)
-                .HasForeignKey(el => el.WeightCollectionId)
+            modelBuilder.Entity<WeightingElement>()
+                .HasOne(el =>el.WeightingCollection)
+                .WithMany(sh => sh.WeightingElements)
+                .HasForeignKey(el => el.WeightingCollectionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ShipmentId_Shipments");
 
@@ -84,7 +84,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
             modelBuilder.Entity<UwsLogType>()
                 .HasIndex(u => u.Key)
                 .IsUnique();
-            modelBuilder.Entity<WeightPropertyType>()
+            modelBuilder.Entity<WeightingPropertyType>()
                 .HasIndex(u => u.Key)
                 .IsUnique();
             

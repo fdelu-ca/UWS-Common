@@ -21,19 +21,19 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
             set => InfoLevel = (InfoLevel) Enum.Parse(typeof(InfoLevel), value);
         }
 
-        public long? WeightCollectionId { get; set; }          
-        public WeightCollection WeightCollection{ get; set; }        
+        public int? WeightingCollectionId { get; set; }          
+        public WeightingCollection WeightingCollection{ get; set; }        
         
         public int? RecognCollectionId { get; set; }          
         // public RecognCollection RecognCollection { get; set; }       
         
-        public int? StationId { get; set; }
+        public int? ScalesSerial { get; set; }
         // public Station Station { get; set; }
 
         public int? UwsLogTypeId { get; set; }
         public UwsLogType UwsLogType { get; set; }
         
-        public long? UwsLogDetailId { get; set; }
+        public int? UwsLogDetailId { get; set; }
         public virtual UwsLogDetail UwsLogDetail { get; set; }
     }
 }

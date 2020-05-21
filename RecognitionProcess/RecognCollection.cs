@@ -13,7 +13,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess
             RecognElements = new List<RecognElement>();
         }
 
-        public long Id { get; set; } // Ключ    
+        public int Id { get; set; } // Ключ    
         public DateTimeOffset? Begin { get; set; } // Дата начала перевески
         public DateTimeOffset? End { get; set; } // Дата окончания перевески
 

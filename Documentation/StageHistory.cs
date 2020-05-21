@@ -6,16 +6,16 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Documentation
 {
     public class StageHistory
     {
-        public long Id { get; set; }  
+        public int Id { get; set; }  
         
-        public long? LastStageId { get; set; }   
+        public int? LastStageId { get; set; }   
         public StageHistory LastStage { get; set; }   
 
         public DateTimeOffset Timestamp{ get; set; }       // Время изменения
         public Stage Stage{ get; set; }              // Новое состояние системы
         
-        public long? WeightCollectionId{ get; set; }          
-        public WeightCollection WeightCollection{ get; set; }        // Перевеска
+        public int? WeightingCollectionId{ get; set; }          
+        public WeightingCollection WeightingCollection { get; set; }        // Перевеска
 
         
         //TODO Add Domain Authorization

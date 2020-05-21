@@ -1,6 +1,6 @@
 ﻿namespace ArcelorMittal.UnifiedWeightSystem.Common
 {
-    public enum TypeWeight : byte
+    public enum TypeWeight : int
     {
         Tara = 1,
 

@@ -1,6 +1,6 @@
 ﻿namespace ArcelorMittal.UnifiedWeightSystem.Common
 {
-    public enum Direction : byte
+    public enum Direction : int
     {
         North = 1,
         East = 2,
