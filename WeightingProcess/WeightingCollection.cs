@@ -21,17 +21,21 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         public int LocalId { get; set; }
         public ICollection<WeightingElement> WeightingElements { get; set; } //Конкретные взвешивания(одно Т/С)
 
-        public DateTimeOffset? DtBegin { get; set; } //Дата начала перевески
-        public DateTimeOffset? DtEnd { get; set; } //Дата окончания перевески
+        [Column(TypeName = "datetime")]
+        public DateTime? DtBegin { get; set; } //Дата начала перевески
+        [Column(TypeName = "datetime")]
+        public DateTime? DtEnd { get; set; } //Дата окончания перевески
 
         // public Station Station { get; set; }//[43] - Станция
         public int? ScalesSerial { get; set; } 
         
         [DefaultValue(Direction.Undefined)]
         public Direction Direction { get; set; } // Направление состава
-        [DefaultValue(Stage.Undefined)]
-        public Stage Stage { get; set; } //[Complite] - Текущий этап
-        public bool Release { get; set; }
+        [DefaultValue(Common.Stage.Undefined)]
+        public Stage? Stage { get; set; } //[Complite] - Текущий этап
+        
+        [DefaultValue(true)]
+        public bool? Release { get; set; }
         
         [MaxLength(30)]
         public string Status { get; set; } //Статус

@@ -32,8 +32,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int>("Stage")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.Property<int?>("WeightingCollectionId")
                         .HasColumnType("int");
@@ -65,8 +65,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int?>("ScalesSerial")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.Property<int?>("UwsLogDetailId")
                         .HasColumnType("int");
@@ -139,25 +139,25 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int>("Direction")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("DtBegin")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("DtBegin")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTimeOffset?>("DtEnd")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("DtEnd")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("LocalId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Release")
+                    b.Property<bool?>("Release")
                         .HasColumnType("bit");
 
                     b.Property<int?>("ScalesSerial")
                         .HasColumnType("int");
 
-                    b.Property<int>("Stage")
+                    b.Property<int?>("Stage")
                         .HasColumnType("int");
 
-                    b.Property<string>("TrainStatus")
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
@@ -173,8 +173,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(30)")
@@ -221,11 +221,11 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
-                    b.Property<int?>("Speed")
-                        .HasColumnType("int");
+                    b.Property<double?>("Speed")
+                        .HasColumnType("float");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("TypeWeight")
                         .HasColumnType("int");
@@ -259,8 +259,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(30)")

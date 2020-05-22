@@ -9,7 +9,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         public int Id { get; set; }
         public int WeightElementId { get; set; }
         public WeightingElement WeightElement { get; set; }
-        public DateTimeOffset Timestamp { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime Timestamp { get; set; }
         [MaxLength(30)]
         public string Value { get; set; }
 

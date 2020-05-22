@@ -4,6 +4,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>ArcelorMittal.UnifiedWeightSystem.Common</RootNamespace>
         <AssemblyName>UWS-Common</AssemblyName>
+        <Version>1.1.2</Version>
+        <Authors>fdeluca</Authors>
+        <Company>ArcelorMittal</Company>
+        <Product>Unified Weighting System</Product>
     </PropertyGroup>
 
     <ItemGroup>

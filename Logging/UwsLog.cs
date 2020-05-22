@@ -12,7 +12,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
     {
         
         public int Id { get; set; }
-        public DateTimeOffset Timestamp { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime Timestamp { get; set; }
         
         [NotMapped] public InfoLevel InfoLevel;
         public string Level

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.Documentation
@@ -10,8 +11,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Documentation
         
         public int? LastStageId { get; set; }   
         public StageHistory LastStage { get; set; }   
-
-        public DateTimeOffset Timestamp{ get; set; }       // Время изменения
+        [Column(TypeName = "datetime")]
+        public DateTime Timestamp{ get; set; }       // Время изменения
         public Stage Stage{ get; set; }              // Новое состояние системы
         
         public int? WeightingCollectionId{ get; set; }          

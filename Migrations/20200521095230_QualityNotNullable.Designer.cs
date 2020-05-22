@@ -34,8 +34,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int>("Stage")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("DateTime");
 
                     b.Property<int?>("WeightingCollectionId")
                         .HasColumnType("int");
@@ -67,8 +67,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int?>("ScalesSerial")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("DateTime");
 
                     b.Property<int?>("UwsLogDetailId")
                         .HasColumnType("int");
@@ -141,11 +141,11 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int>("Direction")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("DtBegin")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("DtBegin")
+                        .HasColumnType("DateTime");
 
-                    b.Property<DateTimeOffset?>("DtEnd")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("DtEnd")
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("LocalId")
                         .HasColumnType("int");
@@ -175,8 +175,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(30)")
@@ -226,8 +226,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int?>("Speed")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("TypeWeight")
                         .HasColumnType("int");
@@ -261,8 +261,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(30)")

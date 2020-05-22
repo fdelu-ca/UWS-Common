@@ -17,7 +17,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
 
         public int Id { get; set; } //[45671] - Уникальный id перевески
         public int? OrderNumber { get; set; } //[1] - Порядковый номер
-        public DateTimeOffset Timestamp { get; set; } //[08.04.2020 17:06:36] -
+        [Column(TypeName = "datetime")]
+        public DateTime Timestamp { get; set; } //[08.04.2020 17:06:36] -
 
         public int? WeightingCollectionId { get; set; } //[1] - Перевеска
         public WeightingCollection WeightingCollection { get; set; }
@@ -38,7 +39,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         [DefaultValue(TypeWeight.Undefined)]
         public TypeWeight TypeWeight { get; set; } //[Bruto] - Тип веса
         public int Weight { get; set; } //[112.4] - Фактический вес
-        public int? Speed { get; set; } //Скорость Т/С
+        public double? Speed { get; set; } //Скорость Т/С
         public int Quality { get; set; } //Качество взвешивания
         
         
