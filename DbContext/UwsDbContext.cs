@@ -18,9 +18,9 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         // public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
 
         //Log
-        public virtual DbSet<UwsLog> UwsLogs { get; set; }
-        public virtual DbSet<UwsLogDetail> UwsLogDetails { get; set; }
-        public virtual DbSet<UwsLogType> UwsLogTypes { get; set; }
+        public virtual DbSet<UwsLog> UwsLog { get; set; }
+        //public virtual DbSet<UwsLogDetail> UwsLogDetails { get; set; }
+        //public virtual DbSet<UwsLogType> UwsLogTypes { get; set; }
 
         //RecognitionProcess
         //Todo Add Recognition in DB
@@ -81,9 +81,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
                 .WithOne()
                 .OnDelete(DeleteBehavior.NoAction);
             
-            modelBuilder.Entity<UwsLogType>()
-                .HasIndex(u => u.Key)
-                .IsUnique();
             modelBuilder.Entity<WeightingPropertyType>()
                 .HasIndex(u => u.Key)
                 .IsUnique();
