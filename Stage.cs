@@ -16,7 +16,7 @@
         SendToSAP     = 0x47,        //Отправлен в SAP
 
         //Common
-        Undefined          = 0x00,        //Не имеет статуса 
+        Undefined     = 0x00,        //Не имеет статуса 
         Defect        = 0xFF,        //Забраковано
     }
 }
