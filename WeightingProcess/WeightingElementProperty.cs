@@ -14,7 +14,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         [MaxLength(30)]
         public string Value { get; set; }
 
-        public int WeightPropertyTypeId { get; set; }
+        public int WeightingPropertyTypeId { get; set; }
         public WeightingPropertyType WeightingPropertyType { get; set; }
     }
 }

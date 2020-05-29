@@ -56,7 +56,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=KRR-TST-PAHWL02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=KRR-SQL-PACLX02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
             }
         }
 
