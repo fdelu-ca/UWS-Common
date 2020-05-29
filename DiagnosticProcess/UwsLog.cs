@@ -7,7 +7,7 @@ using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
 using Microsoft.Extensions.Logging;
 
-namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
+namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
 {
     public class UwsLog
     {
@@ -18,7 +18,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Logging
         [Column(TypeName = "datetime")] public DateTime Timestamp { get; set; }
 
         [NotMapped] public LogLevel LogLevel;
-        [MaxLength(12)] public string Level
+        [MaxLength(12)]
+        public string Level
         {
             get => LogLevel.ToString();
             set => LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), value);

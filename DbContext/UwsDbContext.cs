@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using ArcelorMittal.UnifiedWeightSystem.Common.Documentation;
-using ArcelorMittal.UnifiedWeightSystem.Common.Logging;
+using ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
@@ -17,8 +17,10 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         // public virtual DbSet<VehicleProperty> VehicleProperties { get; set; }        
         // public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
 
-        //Log
+        //DiagnosticProcess
         public virtual DbSet<UwsLog> UwsLog { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<StatusType> StatusTypes{ get; set; }
         //public virtual DbSet<UwsLogDetail> UwsLogDetails { get; set; }
         //public virtual DbSet<UwsLogType> UwsLogTypes { get; set; }
 
