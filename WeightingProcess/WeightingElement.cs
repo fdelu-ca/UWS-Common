@@ -30,7 +30,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         public VehicleType VehicleType { get; set; }
         public int? AxisCount { get; set; }
         public int? Length { get; set; }
-        public int? WeightingOperationsID{ get; set; }
+        public int? WeightingOperationsId{ get; set; }
         [MaxLength(10)]
         public string RecNumber{ get; set; }
 

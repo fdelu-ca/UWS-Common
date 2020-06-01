@@ -4,14 +4,16 @@ using ArcelorMittal.UnifiedWeightSystem.Common.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
 {
     [DbContext(typeof(UwsDbContext))]
-    partial class UwsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200529160516_AddProcessType")]
+    partial class AddProcessType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,13 +64,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("DisplayTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

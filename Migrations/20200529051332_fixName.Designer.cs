@@ -4,14 +4,16 @@ using ArcelorMittal.UnifiedWeightSystem.Common.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
 {
     [DbContext(typeof(UwsDbContext))]
-    partial class UwsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200529051332_fixName")]
+    partial class fixName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,73 +21,37 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess.Status", b =>
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Documentation.StageHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProcessCellId")
+                    b.Property<int?>("LastStageId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StatusTypeId")
+                    b.Property<int>("Stage")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                    b.Property<int?>("WeightingCollectionId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StatusTypeId");
+                    b.HasIndex("LastStageId")
+                        .IsUnique()
+                        .HasFilter("[LastStageId] IS NOT NULL");
 
-                    b.ToTable("Statuses");
+                    b.HasIndex("WeightingCollectionId");
+
+                    b.ToTable("StageHistory");
                 });
 
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess.StatusType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DataType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("DisplayTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.Property<string>("ProcessType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StatusTypes");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess.UwsLog", b =>
+            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Logging.UwsLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,36 +83,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UwsLog");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Documentation.StageHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("LastStageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Stage")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime");
-
-                    b.Property<int?>("WeightingCollectionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LastStageId")
-                        .IsUnique()
-                        .HasFilter("[LastStageId] IS NOT NULL");
-
-                    b.HasIndex("WeightingCollectionId");
-
-                    b.ToTable("StageHistory");
                 });
 
             modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess.WeightingCollection", b =>
@@ -322,13 +258,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .IsUnique();
 
                     b.ToTable("WeightingPropertyTypes");
-                });
-
-            modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess.Status", b =>
-                {
-                    b.HasOne("ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess.StatusType", "StatusType")
-                        .WithMany()
-                        .HasForeignKey("StatusTypeId");
                 });
 
             modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Documentation.StageHistory", b =>

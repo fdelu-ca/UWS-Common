@@ -2,17 +2,20 @@
 {
     public enum Direction : int
     {
-        North = 1,
-        East = 2,
-        South = 3,
-        West = 4,
-        Static = 5,
+        Arrival = 0,
+        Departure = 1,
+        //
+        North = 3,
+        East = 4,
+        South = 5,
+        West = 6,
+        Static = 7,
 
-        NorthEast = 12,
-        NorthWest = 14,
-        SouthEast = 32,
-        SouthWest = 34,
+        NorthEast = 34,
+        NorthWest = 36,
+        SouthEast = 54,
+        SouthWest = 56,
 
-        Undefined = 0x00
+        Undefined = 0xFF
     }
 }

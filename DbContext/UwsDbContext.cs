@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using ArcelorMittal.UnifiedWeightSystem.Common.Documentation;
-using ArcelorMittal.UnifiedWeightSystem.Common.Logging;
+using ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
@@ -17,10 +17,12 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         // public virtual DbSet<VehicleProperty> VehicleProperties { get; set; }        
         // public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
 
-        //Log
-        public virtual DbSet<UwsLog> UwsLogs { get; set; }
-        public virtual DbSet<UwsLogDetail> UwsLogDetails { get; set; }
-        public virtual DbSet<UwsLogType> UwsLogTypes { get; set; }
+        //DiagnosticProcess
+        public virtual DbSet<UwsLog> UwsLog { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<StatusType> StatusTypes{ get; set; }
+        //public virtual DbSet<UwsLogDetail> UwsLogDetails { get; set; }
+        //public virtual DbSet<UwsLogType> UwsLogTypes { get; set; }
 
         //RecognitionProcess
         //Todo Add Recognition in DB
@@ -56,7 +58,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=KRR-TST-PAHWL02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=KRR-SQL-PACLX02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
             }
         }
 
@@ -81,9 +83,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
                 .WithOne()
                 .OnDelete(DeleteBehavior.NoAction);
             
-            modelBuilder.Entity<UwsLogType>()
-                .HasIndex(u => u.Key)
-                .IsUnique();
             modelBuilder.Entity<WeightingPropertyType>()
                 .HasIndex(u => u.Key)
                 .IsUnique();
