@@ -1,14 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>ArcelorMittal.UnifiedWeightSystem.Common</RootNamespace>
-        <AssemblyName>UWS-Common</AssemblyName>
-        <Version>1.1.2</Version>
+        <AssemblyName>ArcelorMittal.UnifiedWeightSystem.Common</AssemblyName>
+        <Version>1.2</Version>
         <Authors>fdeluca</Authors>
         <Company>ArcelorMittal</Company>
         <Product>Unified Weighting System</Product>
+        <PackageId></PackageId>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputType>Library</OutputType>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<PublishTrimmed>true</PublishTrimmed>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<PublishSingleFile>true</PublishSingleFile>
+		<RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+		<PostBuildEvent>
+			del *.json
+		</PostBuildEvent>
+	</PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
@@ -17,6 +35,10 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.4" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Properties\" />
     </ItemGroup>
 
 </Project>
