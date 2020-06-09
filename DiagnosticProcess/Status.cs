@@ -13,11 +13,15 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
 
         [MaxLength(50)] 
         public string Value { get; set; }
-
         public int? StatusTypeId { get; set; }
         public StatusType StatusType { get; set; }
 
         [Column(TypeName = "datetime"),DefaultValue("(getDate())")]
         public DateTime Timestamp { get; set; }
+        public int? Order { get; set; }
+
+        [DefaultValue(1)]
+        public bool StatusColor { get; set; }
+
     }
 }

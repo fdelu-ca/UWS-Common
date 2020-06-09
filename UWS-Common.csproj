@@ -23,9 +23,6 @@
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<PublishSingleFile>true</PublishSingleFile>
 		<RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
-		<PostBuildEvent>
-			del *.json
-		</PostBuildEvent>
 	</PropertyGroup>
 
     <ItemGroup>
@@ -35,6 +32,8 @@
       <Compile Remove="Migrations\20200529162446_ReBaseStatus.Designer.cs" />
       <Compile Remove="Migrations\20200529165011_RenameToTitle.cs" />
       <Compile Remove="Migrations\20200529165011_RenameToTitle.Designer.cs" />
+      <Compile Remove="Migrations\20200604102748_TstUp.cs" />
+      <Compile Remove="Migrations\20200604102748_TstUp.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

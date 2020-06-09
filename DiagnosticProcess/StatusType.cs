@@ -18,6 +18,9 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
         [MaxLength(30), Required]
         public string Name { get; set; }
 
+        [MaxLength(50)]
+        public string Default { get; set; }
+
         [MaxLength(10), Required]
         public string DataType { get; set; }    //Boolean, Integer, Float, String, DateTime, Binary
 
