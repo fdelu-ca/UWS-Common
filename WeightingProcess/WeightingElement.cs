@@ -41,7 +41,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         public int Weight { get; set; } //[112.4] - Фактический вес
         public double? Speed { get; set; } //Скорость Т/С
         public int Quality { get; set; } //Качество взвешивания
-        
-        
+
+        public int? WayBillId { get; set; } //Путевая
+
     }
 }

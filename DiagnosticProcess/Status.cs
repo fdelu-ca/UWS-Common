@@ -23,5 +23,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
         [DefaultValue(1)]
         public bool StatusColor { get; set; }
 
+        [NotMapped]
+        public string StatusTypeName { get; set; }
+
     }
 }

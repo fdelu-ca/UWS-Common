@@ -7,7 +7,10 @@ using System.Text;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
 {
-
+    /// <summary>
+    /// Для синхронизации типов статусов между серверами использовать процедуру 
+    /// exec [krr-sql-paclx02].[KRR-PA-ISA95_PRODUCTION].[dbo].[statusTypeSynchronization]
+    /// </summary>
     public class StatusType
     {
         public int Id { get; set; }

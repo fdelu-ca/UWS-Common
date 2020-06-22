@@ -49,14 +49,18 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         public UwsDbContext(DbContextOptions<UwsDbContext> options)
             : base(options)
         {
+
+            Database.SetCommandTimeout(60);
         }
 
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=KRR-tst-pahwl02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=KRR-tst-pahwl02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=KRR-sql-paclx02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
             }
         }
 

@@ -39,5 +39,6 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess
         
         [MaxLength(30)]
         public string Status { get; set; } //Статус
+
     }
 }
