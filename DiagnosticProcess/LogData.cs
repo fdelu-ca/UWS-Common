@@ -9,20 +9,20 @@ using Microsoft.Extensions.Logging;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.DiagnosticProcess
 {
-    public class UwsLog
+    public class LogData
     {
 
         public int Id { get; set; }
         public int? ProcessCellId { get; set; }
         public string Logger { get; set; }
-        [Column(TypeName = "datetime")] public DateTime Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
 
-        [NotMapped] public LogLevel LogLevel;
-        [MaxLength(12)]
+        [NotMapped] public NLog.LogLevel LogLevel;
+        [MaxLength(5)]
         public string Level
         {
             get => LogLevel.ToString();
-            set => LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), value);
+            set => LogLevel = (NLog.LogLevel)Enum.Parse(typeof(NLog.LogLevel), value);
         }
 
         public string Message { get; set; }

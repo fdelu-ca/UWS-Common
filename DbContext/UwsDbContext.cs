@@ -6,6 +6,7 @@ using ArcelorMittal.UnifiedWeightSystem.Common.RecognitionProcess;
 using ArcelorMittal.UnifiedWeightSystem.Common.Sites;
 using ArcelorMittal.UnifiedWeightSystem.Common.WeightingProcess;
 using Microsoft.EntityFrameworkCore;
+using ArcelorMittal.UnifiedWeightSystem.Common.ChainOfStages;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
 {
@@ -17,14 +18,17 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         // public virtual DbSet<VehicleProperty> VehicleProperties { get; set; }        
         // public virtual DbSet<VehiclePropertyType> VehiclePropertyTypes { get; set; }        
 
-        //DiagnosticProcess
-        public virtual DbSet<UwsLog> UwsLog { get; set; }
+        //Diagnostic Process
+        public virtual DbSet<LogData> ServiceLog { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<StatusType> StatusTypes{ get; set; }
 
         //RecognitionProcess
         //Todo Add Recognition in DB
-        
+
+        //StageProcess
+        public virtual DbSet<ProcessCellStage> ProcessCellStages { get; set; }
+
         //Sites
         //public virtual DbSet<Shop> Shops  { get; set; }
         //public virtual DbSet<ShopProperty> ShopProperties  { get; set; }
@@ -34,7 +38,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
         //public virtual DbSet<StationProperty> StationProperties  { get; set; }
         //public virtual DbSet<StationPropertyType> StationPropertyTypes  { get; set; }
 
-        //WeightingProcess
+        //Weighting Process
         public virtual DbSet<WeightingCollection> WeightingCollections { get; set; }
         public virtual DbSet<WeightingCollectionProperty> WeightingCollectionProperties  { get; set; }
 
@@ -60,7 +64,7 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.DbContext
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlServer("Server=KRR-tst-pahwl02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=KRR-sql-paclx02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=KRR-SQL-PACLX02;Database=KRR-PA-ISA95_PRODUCTION;Trusted_Connection=True;");
             }
         }
 

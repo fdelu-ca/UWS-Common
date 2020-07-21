@@ -4,14 +4,16 @@ using ArcelorMittal.UnifiedWeightSystem.Common.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
 {
     [DbContext(typeof(UwsDbContext))]
-    partial class UwsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200701120411_AddStageProcess")]
+    partial class AddStageProcess
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,8 +136,8 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Level")
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(12)")
+                        .HasMaxLength(12);
 
                     b.Property<string>("Logger")
                         .HasColumnType("nvarchar(max)");
@@ -146,12 +148,12 @@ namespace ArcelorMittal.UnifiedWeightSystem.Common.Migrations
                     b.Property<int?>("ProcessCellId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceLog");
+                    b.ToTable("UwsLog");
                 });
 
             modelBuilder.Entity("ArcelorMittal.UnifiedWeightSystem.Common.Documentation.StageHistory", b =>
